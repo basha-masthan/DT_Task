@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event & Nudge Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Event & Nudge Manager</h1>
+    
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('events')">Events</button>
+      <button class="tab-btn" onclick="showTab('nudges')">Nudges</button>
+    </div>
+
+    <!-- Events Tab -->
+    <div id="events-tab" class="tab-content active">
+      <h2>Events Management</h2>
+      
+      <!-- Create Event Form -->
+      <div class="form-section">
+        <h3>Create New Event</h3>
+        <form id="event-form" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="event-name">Event Name *</label>
+            <input type="text" id="event-name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="event-tagline">Tagline</label>
+            <input type="text" id="event-tagline" name="tagline">
+          </div>
+          <div class="form-group">
+            <label for="event-schedule">Schedule *</label>
+            <input type="datetime-local" id="event-schedule" name="schedule" required>
+          </div>
+          <div class="form-group">
+            <label for="event-description">Description</label>
+            <textarea id="event-description" name="description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="event-moderator">Moderator</label>
+            <input type="text" id="event-moderator" name="moderator">
+          </div>
+          <div class="form-group">
+            <label for="event-category">Category</label>
+            <input type="text" id="event-category" name="category">
+          </div>
+          <div class="form-group">
+            <label for="event-sub-category">Sub Category</label>
+            <input type="text" id="event-sub-category" name="sub_category">
+          </div>
+          <div class="form-group">
+            <label for="event-rigor-rank">Rigor Rank</label>
+            <input type="number" id="event-rigor-rank" name="rigor_rank" value="0">
+          </div>
+          <div class="form-group">
+            <label for="event-image">Cover Image</label>
+            <input type="file" id="event-image" name="image" accept="image/*">
+          </div>
+          <button type="submit" class="btn btn-primary">Create Event</button>
+        </form>
+      </div>
+
+      <!-- Events List -->
+      <div class="list-section">
+        <h3>Events List</h3>
+        <button onclick="fetchEvents()" class="btn btn-secondary">Refresh Events</button>
+        <div id="events-list" class="card-container"></div>
+      </div>
+    </div>
+
+    <!-- Nudges Tab -->
+    <div id="nudges-tab" class="tab-content">
+      <h2>Nudges Management</h2>
+      
+      <!-- Create Nudge Form -->
+      <div class="form-section">
+        <h3>Create New Nudge</h3>
+        <form id="nudge-form" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="nudge-title">Title *</label>
+            <input type="text" id="nudge-title" name="title" required>
+          </div>
+          <div class="form-group">
+            <label for="nudge-event-id">Tag Event *</label>
+            <select id="nudge-event-id" name="event_id" required>
+              <option value="">Select an event</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="nudge-send-time">Send Time *</label>
+            <input type="datetime-local" id="nudge-send-time" name="send_time" required>
+          </div>
+          <div class="form-group">
+            <label for="nudge-description">Description</label>
+            <textarea id="nudge-description" name="description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="nudge-invitation">Invitation Line *</label>
+            <input type="text" id="nudge-invitation" name="invitation_line" required>
+          </div>
+          <div class="form-group">
+            <label for="nudge-cover">Cover Image</label>
+            <input type="file" id="nudge-cover" name="cover_image" accept="image/*">
+          </div>
+          <div class="form-group">
+            <label for="nudge-icon">Icon</label>
+            <input type="file" id="nudge-icon" name="icon" accept="image/*">
+          </div>
+          <button type="submit" class="btn btn-primary">Create Nudge</button>
+        </form>
+      </div>
+
+      <!-- Nudges List -->
+      <div class="list-section">
+        <h3>Nudges List</h3>
+        <button onclick="fetchNudges()" class="btn btn-secondary">Refresh Nudges</button>
+        <div id="nudges-list" class="card-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

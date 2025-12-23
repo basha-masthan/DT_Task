@@ -1,0 +1,15 @@
+{
+  "name": "event-nudge-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Event and Nudge Manager",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -l 5500"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
